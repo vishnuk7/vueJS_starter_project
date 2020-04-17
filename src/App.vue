@@ -2,30 +2,37 @@
   <div id="app">
     <Nav :cart="cartLength" :premium="premium" />
     <Product :premium="premium" @add-to-cart="updateCart" />
+    <ProductReview @review-submitted="addReview" />
   </div>
 </template>
 
 <script>
 import Product from "./components/Product";
 import Nav from "./components/Nav";
+import ProductReview from "./components/ProductReview";
 
 export default {
   name: "App",
   components: {
     Product,
-    Nav
+    Nav,
+    ProductReview
   },
   data() {
     return {
       premium: false,
       cart: [],
-      cartLength: 0
+      cartLength: 0,
+      reviews: []
     };
   },
   methods: {
     updateCart(id) {
       this.cart.push(id);
       this.cartLength = this.cart.length;
+    },
+    addReview(productReview) {
+      this.reviews.push(productReview);
     }
   }
 };

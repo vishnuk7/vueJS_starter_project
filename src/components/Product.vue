@@ -52,13 +52,13 @@ export default {
       variants: [
         {
           variantId: 3334,
-          variantColor: "lightgreen",
+          variantColor: "#2a8351",
           variantImg: "../assets/scocks-1.jpeg",
           variantQty: 10
         },
         {
           variantId: 3335,
-          variantColor: "lightblue",
+          variantColor: "#233349",
           variantImg: "../assets/scocks-2.jpeg",
           variantQty: 0
         }
