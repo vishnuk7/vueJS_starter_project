@@ -4,11 +4,6 @@
       <img :src="image" :alt="product" />
     </div>
     <div class="product-info">
-      <div class="header">
-        <p v-if="premium">Premium User</p>
-        <p v-else>Become a premium user</p>
-        <div class="cart">{{ cart }}</div>
-      </div>
       <h5>{{ title }}</h5>
       <p class="desc">{{ description }}</p>
       <ul>
@@ -25,7 +20,7 @@
       </div>
       <small v-if="inStock">
         In Stock
-        <bold>{{ shipping }}</bold>
+        <span class="bold">{{ shipping }}</span>
       </small>
       <small v-else>Out of Stock</small>
 
@@ -53,7 +48,6 @@ export default {
       brand: "Viu",
       description: "A pair of warm, fuzzy socks",
       selectedVariant: 0,
-      cart: 0,
       details: ["80% cotton", "20% polyester", "Gender-neutral"],
       variants: [
         {
@@ -73,7 +67,7 @@ export default {
   },
   methods: {
     addToCart() {
-      this.cart += 1;
+      console.log("add to cart fire up");
     },
     updateProduct(index) {
       this.selectedVariant = index;
@@ -110,39 +104,14 @@ export default {
   justify-content: space-evenly;
 }
 
-.header {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin: 8px 0;
-}
-
 h5 {
   color: #45aa7b;
   margin-bottom: 5px;
+  margin-top: 15px;
 }
 
-bold {
+.bold {
   color: rgb(26, 46, 39);
-}
-
-.cart {
-  background-color: #45aa7b;
-  color: #fff;
-  font-weight: bold;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.header p {
-  margin-right: 10px;
-  color: darkslategrey;
-  font-size: 14px;
-  font-weight: bold;
 }
 
 .desc {
@@ -164,6 +133,7 @@ button {
   color: #fff;
   font-weight: 400;
   background-color: #45aa7b;
+  cursor: pointer;
 }
 
 .disabledButton {
@@ -182,6 +152,5 @@ img {
 .color-box {
   width: 50px;
   height: 50px;
-  background-color: ;
 }
 </style>

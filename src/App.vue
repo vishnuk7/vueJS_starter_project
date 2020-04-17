@@ -1,21 +1,30 @@
 <template>
   <div id="app">
-    <Product :premium="premium" />
+    <Nav :cart="cart" :premium="premium" />
+    <Product :premium="premium" @add-to-cart="updateCart" />
   </div>
 </template>
 
 <script>
 import Product from "./components/Product";
+import Nav from "./components/Nav";
 
 export default {
   name: "App",
   components: {
-    Product
+    Product,
+    Nav
   },
   data() {
     return {
-      premium: false
+      premium: false,
+      cart: 0
     };
+  },
+  methods: {
+    updateCart() {
+      this.cart += 1;
+    }
   }
 };
 </script>
