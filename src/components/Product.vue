@@ -1,7 +1,12 @@
 <template>
-  <div>
-    <h5>{{ product }}</h5>
-    <p>{{ description }}</p>
+  <div class="product">
+    <div class="product-image">
+      <img :src="img" :alt="product" />
+    </div>
+    <div class="product-info">
+      <h5>{{ product }}</h5>
+      <p>{{ description }}</p>
+    </div>
   </div>
 </template>
 
@@ -11,6 +16,7 @@ export default {
   data() {
     this.product = "Scoks";
     this.description = "A pair of warm, fuzzy socks";
+    this.img = "../assets/scoks-1.jpeg";
   }
 };
 </script>
