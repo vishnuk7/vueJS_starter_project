@@ -4,7 +4,7 @@
       <img :src="img" :alt="product" />
     </div>
     <div class="product-info">
-      <h5>{{ product }}</h5>
+      <h5>{{ title }}</h5>
       <p>{{ description }}</p>
       <ul>
         <li v-for="detail in details" :key="detail">{{ detail }}</li>
@@ -36,6 +36,7 @@ export default {
   data() {
     return {
       product: "Scoks",
+      brand: "Viu",
       description: "A pair of warm, fuzzy socks",
       img: "../assets/scocks-1.jpeg",
       inStock: false,
@@ -61,6 +62,11 @@ export default {
     },
     updateProduct(variantImg) {
       this.img = variantImg;
+    }
+  },
+  computed: {
+    title() {
+      return this.brand + " " + this.product;
     }
   }
 };
