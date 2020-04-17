@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Product :premuim="premuim" />
+    <Product :premium="premium" />
   </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
   },
   data() {
     return {
-      premuim: true
+      premium: true
     };
   }
 };

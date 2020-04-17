@@ -5,7 +5,8 @@
     </div>
     <div class="product-info">
       <div class="header">
-        <p v-if="premuim">Premuim User</p>
+        <p v-if="premium">Premium User</p>
+        <p v-else>Become a premium user</p>
         <div class="cart">{{ cart }}</div>
       </div>
       <h5>{{ title }}</h5>
@@ -37,7 +38,12 @@
 <script>
 export default {
   name: "Product",
-  props: ["premuim"],
+  props: {
+    premium: {
+      type: Boolean,
+      required: true
+    }
+  },
   data() {
     return {
       product: "Scoks",
