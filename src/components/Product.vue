@@ -1,34 +1,57 @@
 <template>
-  <div class="product">
-    <div class="product-image">
-      <img :src="image" :alt="product" />
-    </div>
-    <div class="product-info">
-      <h5>{{ title }}</h5>
-      <p class="desc">{{ description }}</p>
-      <ul>
-        <li v-for="detail in details" :key="detail">{{ detail }}</li>
-      </ul>
-      <div class="color-option">
-        <div
-          class="color-box"
-          v-for="(variant,index) in variants"
-          :key="index"
-          :style="{ backgroundColor: variant.variantColor }"
-          @mouseover="updateProduct(index)"
-        ></div>
+  <div>
+    <div class="product">
+      <div class="product-image">
+        <img :src="image" :alt="product" />
       </div>
-      <small v-if="inStock">
-        In Stock
-        <span class="bold">{{ shipping }}</span>
-      </small>
-      <small v-else>Out of Stock</small>
+      <div class="product-info">
+        <h5>{{ title }}</h5>
+        <p class="desc">{{ description }}</p>
+        <ul>
+          <li v-for="detail in details" :key="detail">{{ detail }}</li>
+        </ul>
+        <div class="color-option">
+          <div
+            class="color-box"
+            v-for="(variant,index) in variants"
+            :key="index"
+            :style="{ backgroundColor: variant.variantColor }"
+            @mouseover="updateProduct(index)"
+          ></div>
+        </div>
+        <small v-if="inStock">
+          In Stock
+          <span class="bold">{{ shipping }}</span>
+          <span class="shipping-tag">shipping</span>
+        </small>
+        <small v-else>Out of Stock</small>
 
-      <button
-        @click="addToCart"
-        :disabled="!inStock"
-        :class="{ disabledButton: !inStock }"
-      >Add to Cart</button>
+        <button
+          @click="addToCart"
+          :disabled="!inStock"
+          :class="{ disabledButton: !inStock }"
+        >Add to Cart</button>
+      </div>
+    </div>
+    <div class="product-review">
+      <h5>Review</h5>
+      <p v-if="!reviews.length" style="color:#868686">There are no reviews yet.</p>
+      <ul>
+        <li v-for="(review,index) in reviews" :key="index">
+          <p>
+            <span class="review-tag">Name:</span>
+            <span>{{ review.name }}</span>
+          </p>
+          <p>
+            <span class="review-tag">Review:</span>
+            <span>{{ review.review }}</span>
+          </p>
+          <p>
+            <span class="review-tag">Rating:</span>
+            <span class="rating">{{ review.rating }}</span>
+          </p>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -40,6 +63,9 @@ export default {
     premium: {
       type: Boolean,
       required: true
+    },
+    reviews: {
+      type: Array
     }
   },
   data() {
@@ -111,7 +137,9 @@ h5 {
 }
 
 .bold {
-  color: rgb(26, 46, 39);
+  color: rgb(35, 51, 73);
+  margin: 0 5px;
+  font-size: 31px;
 }
 
 .desc {
@@ -120,6 +148,10 @@ h5 {
 
 ul {
   margin-bottom: 20px;
+}
+
+li {
+  list-style: none;
 }
 
 button {
@@ -152,5 +184,53 @@ img {
 .color-box {
   width: 50px;
   height: 50px;
+}
+
+.product-review {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.product-review ul {
+  width: 80%;
+}
+
+.product-review li {
+  margin-bottom: 12px;
+  border: 1px solid #d7d7d7;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 3px 5px #b5b5b5;
+}
+
+.product-review p {
+  margin-bottom: 9px;
+}
+
+.review-tag {
+  color: #333;
+  margin-right: 5px;
+}
+
+.rating {
+  color: #45aa7b;
+  font-weight: bold;
+}
+
+.shipping-tag {
+  background-color: #45aa7b;
+  color: #fff;
+  font-weight: bold;
+  padding: 5px;
+  font-size: 10px;
+  border-radius: 10px;
+}
+
+small {
+  display: flex;
+  align-items: center;
 }
 </style>

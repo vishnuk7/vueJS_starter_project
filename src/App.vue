@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Nav :cart="cartLength" :premium="premium" />
-    <Product :premium="premium" @add-to-cart="updateCart" />
+    <Product :premium="premium" :reviews="reviews" @add-to-cart="updateCart" />
     <ProductReview @review-submitted="addReview" />
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
   },
   data() {
     return {
-      premium: false,
+      premium: true,
       cart: [],
       cartLength: 0,
       reviews: []
