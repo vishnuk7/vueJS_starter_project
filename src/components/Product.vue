@@ -14,6 +14,8 @@
       </div>
       <p v-if="inStock">In Stock</p>
       <p v-else>Out of Stock</p>
+      <p>Cart: {{ cart }}</p>
+      <button @click="addToCart">Add to Cart</button>
     </div>
   </div>
 </template>
@@ -25,8 +27,9 @@ export default {
     return {
       product: "Scoks",
       description: "A pair of warm, fuzzy socks",
-      img: "../assets/scoks-1.jpeg",
+      img: "../assets/scocks-1.jpeg",
       isStock: true,
+      cart: 0,
       details: ["80% cotton", "20% polyester", "Gender-neutral"],
       variants: [
         {
@@ -39,6 +42,11 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    addToCart() {
+      this.cart += 1;
+    }
   }
 };
 </script>
