@@ -6,8 +6,13 @@
     <div class="product-info">
       <h5>{{ product }}</h5>
       <p>{{ description }}</p>
-      <p v-if="inventory > 10">In Stock</p>
-      <p v-else-if="inventory >0 && inventory<10">Almost sold out!</p>
+      <ul>
+        <li v-for="detail in details" :key="detail">{{ detail }}</li>
+      </ul>
+      <div v-for="variant in variants" :key="variant.variantId">
+        <p>{{ variant.variantColor }}</p>
+      </div>
+      <p v-if="inStock">In Stock</p>
       <p v-else>Out of Stock</p>
     </div>
   </div>
@@ -17,11 +22,23 @@
 export default {
   name: "Product",
   data() {
-    this.product = "Scoks";
-    this.description = "A pair of warm, fuzzy socks";
-    this.img = "../assets/scoks-1.jpeg";
-    this.isStock = false;
-    this.inventory = 8;
+    return {
+      product: "Scoks",
+      description: "A pair of warm, fuzzy socks",
+      img: "../assets/scoks-1.jpeg",
+      isStock: true,
+      details: ["80% cotton", "20% polyester", "Gender-neutral"],
+      variants: [
+        {
+          variantId: 3334,
+          variantColor: "green"
+        },
+        {
+          variantId: 3335,
+          variantColor: "blue"
+        }
+      ]
+    };
   }
 };
 </script>
