@@ -1,7 +1,7 @@
 <template>
   <div class="product">
     <div class="product-image">
-      <img :src="img" :alt="product" />
+      <img :src="image" :alt="product" />
     </div>
     <div class="product-info">
       <h5>{{ title }}</h5>
@@ -12,10 +12,10 @@
       <div class="color-option">
         <div
           class="color-box"
-          v-for="variant in variants"
-          :key="variant.variantId"
+          v-for="(variant,index) in variants"
+          :key="index"
           :style="{ backgroundColor: variant.variantColor }"
-          @mouseover="updateProduct(variant.variantImg)"
+          @mouseover="updateProduct(index)"
         ></div>
       </div>
       <p v-if="inStock">In Stock</p>
@@ -38,7 +38,7 @@ export default {
       product: "Scoks",
       brand: "Viu",
       description: "A pair of warm, fuzzy socks",
-      img: "../assets/scocks-1.jpeg",
+      selectedVariant: 0,
       inStock: false,
       cart: 0,
       details: ["80% cotton", "20% polyester", "Gender-neutral"],
@@ -60,13 +60,17 @@ export default {
     addToCart() {
       this.cart += 1;
     },
-    updateProduct(variantImg) {
-      this.img = variantImg;
+    updateProduct(index) {
+      this.selectedVariant = index;
+      console.log(this.selectedVariant);
     }
   },
   computed: {
     title() {
       return this.brand + " " + this.product;
+    },
+    image() {
+      return this.variants[this.selectedVariant].variantImg;
     }
   }
 };
