@@ -10,7 +10,7 @@
         <li v-for="detail in details" :key="detail">{{ detail }}</li>
       </ul>
       <div v-for="variant in variants" :key="variant.variantId">
-        <p>{{ variant.variantColor }}</p>
+        <p @mouseover="updateProduct(variant.variantImg)">{{ variant.variantColor }}</p>
       </div>
       <p v-if="inStock">In Stock</p>
       <p v-else>Out of Stock</p>
@@ -34,11 +34,13 @@ export default {
       variants: [
         {
           variantId: 3334,
-          variantColor: "green"
+          variantColor: "green",
+          variantImg: "../assets/scocks-1.jpeg"
         },
         {
           variantId: 3335,
-          variantColor: "blue"
+          variantColor: "blue",
+          variantImg: "../assets/scocks-2.jpeg"
         }
       ]
     };
@@ -46,6 +48,9 @@ export default {
   methods: {
     addToCart() {
       this.cart += 1;
+    },
+    updateProduct(variantImg) {
+      this.img = variantImg;
     }
   }
 };
