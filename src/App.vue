@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Product />
+    <Product :premuim="premuim" />
   </div>
 </template>
 
@@ -11,9 +11,29 @@ export default {
   name: "App",
   components: {
     Product
+  },
+  data() {
+    return {
+      premuim: true
+    };
   }
 };
 </script>
 
 <style>
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
 </style>

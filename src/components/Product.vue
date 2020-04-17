@@ -4,8 +4,12 @@
       <img :src="image" :alt="product" />
     </div>
     <div class="product-info">
+      <div class="header">
+        <p v-if="premuim">Premuim User</p>
+        <div class="cart">{{ cart }}</div>
+      </div>
       <h5>{{ title }}</h5>
-      <p>{{ description }}</p>
+      <p class="desc">{{ description }}</p>
       <ul>
         <li v-for="detail in details" :key="detail">{{ detail }}</li>
       </ul>
@@ -18,9 +22,9 @@
           @mouseover="updateProduct(index)"
         ></div>
       </div>
-      <p v-if="inStock">In Stock</p>
-      <p v-else>Out of Stock</p>
-      <p>Cart: {{ cart }}</p>
+      <small v-if="inStock">In Stock</small>
+      <small v-else>Out of Stock</small>
+
       <button
         @click="addToCart"
         :disabled="!inStock"
@@ -33,6 +37,7 @@
 <script>
 export default {
   name: "Product",
+  props: ["premuim"],
   data() {
     return {
       product: "Scoks",
@@ -82,12 +87,76 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.product {
+  margin-top: 30px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 8px 0;
+}
+
+h5 {
+  color: #45aa7b;
+  margin-bottom: 5px;
+}
+
+.cart {
+  background-color: #45aa7b;
+  color: #fff;
+  font-weight: bold;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header p {
+  margin-right: 10px;
+  color: darkslategrey;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.desc {
+  margin-bottom: 25px;
+}
+
+ul {
+  margin-bottom: 20px;
+}
+
+button {
+  margin-top: 35px;
+  display: block;
+  appearance: none;
+  border: 0;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 10px 20px;
+  color: #fff;
+  font-weight: 400;
+  background-color: #45aa7b;
+}
+
+.disabledButton {
+  background-color: lightgrey;
+}
+
 img {
-  width: 450px;
+  width: 350px;
 }
 
 .color-option {
   display: flex;
+  margin-bottom: 5px;
 }
 
 .color-box {
