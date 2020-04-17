@@ -39,19 +39,20 @@ export default {
       brand: "Viu",
       description: "A pair of warm, fuzzy socks",
       selectedVariant: 0,
-      inStock: false,
       cart: 0,
       details: ["80% cotton", "20% polyester", "Gender-neutral"],
       variants: [
         {
           variantId: 3334,
           variantColor: "lightgreen",
-          variantImg: "../assets/scocks-1.jpeg"
+          variantImg: "../assets/scocks-1.jpeg",
+          variantQty: 10
         },
         {
           variantId: 3335,
           variantColor: "lightblue",
-          variantImg: "../assets/scocks-2.jpeg"
+          variantImg: "../assets/scocks-2.jpeg",
+          variantQty: 0
         }
       ]
     };
@@ -71,6 +72,9 @@ export default {
     },
     image() {
       return this.variants[this.selectedVariant].variantImg;
+    },
+    inStock() {
+      return this.variants[this.selectedVariant].variantQty;
     }
   }
 };
