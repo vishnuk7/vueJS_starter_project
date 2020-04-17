@@ -6,7 +6,8 @@
     <div class="product-info">
       <h5>{{ product }}</h5>
       <p>{{ description }}</p>
-      <p v-if="isStock">In Stock</p>
+      <p v-if="inventory > 10">In Stock</p>
+      <p v-else-if="inventory >0 && inventory<10">Almost sold out!</p>
       <p v-else>Out of Stock</p>
     </div>
   </div>
@@ -20,6 +21,7 @@ export default {
     this.description = "A pair of warm, fuzzy socks";
     this.img = "../assets/scoks-1.jpeg";
     this.isStock = false;
+    this.inventory = 8;
   }
 };
 </script>
