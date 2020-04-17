@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Nav :cart="cart" :premium="premium" />
+    <Nav :cart="cartLength" :premium="premium" />
     <Product :premium="premium" @add-to-cart="updateCart" />
   </div>
 </template>
@@ -18,12 +18,14 @@ export default {
   data() {
     return {
       premium: false,
-      cart: 0
+      cart: [],
+      cartLength: 0
     };
   },
   methods: {
-    updateCart() {
-      this.cart += 1;
+    updateCart(id) {
+      this.cart.push(id);
+      this.cartLength = this.cart.length;
     }
   }
 };

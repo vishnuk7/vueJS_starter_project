@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     addToCart() {
-      console.log("add to cart fire up");
+      this.$emit("add-to-cart", this.variants.variantId);
     },
     updateProduct(index) {
       this.selectedVariant = index;
