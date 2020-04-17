@@ -23,7 +23,10 @@
           @mouseover="updateProduct(index)"
         ></div>
       </div>
-      <small v-if="inStock">In Stock</small>
+      <small v-if="inStock">
+        In Stock
+        <bold>{{ shipping }}</bold>
+      </small>
       <small v-else>Out of Stock</small>
 
       <button
@@ -86,6 +89,13 @@ export default {
     },
     inStock() {
       return this.variants[this.selectedVariant].variantQty;
+    },
+    shipping() {
+      if (this.premium) {
+        return "Free";
+      } else {
+        return "$" + 1.99;
+      }
     }
   }
 };
@@ -110,6 +120,10 @@ export default {
 h5 {
   color: #45aa7b;
   margin-bottom: 5px;
+}
+
+bold {
+  color: rgb(26, 46, 39);
 }
 
 .cart {
