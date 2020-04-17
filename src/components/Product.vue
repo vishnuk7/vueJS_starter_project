@@ -1,10 +1,17 @@
 <template>
-  <div></div>
+  <div>
+    <h5>{{ product }}</h5>
+    <p>{{ description }}</p>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "Product"
+  name: "Product",
+  data() {
+    this.product = "Scoks";
+    this.description = "A pair of warm, fuzzy socks";
+  }
 };
 </script>
 
