@@ -38,6 +38,12 @@
         </select>
       </div>
 
+      <div class="form">
+        <label for="recommend">Would you recommend this product</label>
+        <input type="radio" name="recommend" id="recommend" value="yes" />Yes
+        <input type="radio" name="recommend" id="recommend" value="no" />No
+      </div>
+
       <div class="form-btn">
         <button type="submit">Submit</button>
       </div>
@@ -109,6 +115,25 @@ textarea {
 input[type="text"]::placeholder,
 textarea::placeholder {
   color: #333;
+}
+
+input[type="radio"] {
+  appearance: none;
+  border: 1px solid #d5d5d5;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+input[type="radio"]:hover {
+  background: #aeaeae;
+}
+
+input[type="radio"]:checked {
+  background: #45aa7b;
+  padding: 2px;
 }
 select {
   appearance: none;
