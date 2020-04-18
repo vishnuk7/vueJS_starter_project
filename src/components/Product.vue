@@ -50,6 +50,10 @@
             <span class="review-tag">Rating:</span>
             <span class="rating">{{ review.rating }}</span>
           </p>
+          <p>
+            <span class="review-tag">Recommending :</span>
+            <span class="rating">{{ review.recommend }}</span>
+          </p>
         </li>
       </ul>
     </div>

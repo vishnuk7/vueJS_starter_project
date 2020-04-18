@@ -40,8 +40,8 @@
 
       <div class="form">
         <label for="recommend">Would you recommend this product</label>
-        <input type="radio" name="recommend" id="recommend" value="yes" />Yes
-        <input type="radio" name="recommend" id="recommend" value="no" />No
+        <input v-model="recommend" type="radio" name="recommend" id="recommend" value="yes" />Yes
+        <input v-model="recommend" type="radio" name="recommend" id="recommend" value="no" />No
       </div>
 
       <div class="form-btn">
@@ -59,16 +59,18 @@ export default {
       name: null,
       review: null,
       rating: null,
+      recommend: null,
       errors: []
     };
   },
   methods: {
     onSubmit() {
-      if (this.name && this.review && this.rating) {
+      if (this.name && this.review && this.rating && this.recommend) {
         let productReview = {
           name: this.name,
           review: this.review,
-          rating: this.rating
+          rating: this.rating,
+          recommend: this.recommend
         };
         this.$emit("review-submitted", productReview);
 
@@ -79,6 +81,7 @@ export default {
         if (!this.name) this.errors.push("Name required");
         if (!this.review) this.errors.push("Review required");
         if (!this.rating) this.errors.push("Rating required");
+        if (!this.recommend) this.errors.push("Give some recommendtion");
       }
     }
   }
