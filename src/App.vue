@@ -2,6 +2,7 @@
   <div id="app">
     <Nav :cart="cartLength" :premium="premium" />
     <Product :premium="premium" :reviews="reviews" @add-to-cart="updateCart" />
+    <ProductTab />
     <ProductReview @review-submitted="addReview" />
   </div>
 </template>
@@ -10,13 +11,15 @@
 import Product from "./components/Product";
 import Nav from "./components/Nav";
 import ProductReview from "./components/ProductReview";
+import ProductTab from "./components/ProductTab";
 
 export default {
   name: "App",
   components: {
     Product,
     Nav,
-    ProductReview
+    ProductReview,
+    ProductTab
   },
   data() {
     return {
