@@ -20,7 +20,7 @@ export default {
   },
   data() {
     return {
-      premium: true,
+      premium: false,
       cart: [],
       cartLength: 0,
       reviews: []
