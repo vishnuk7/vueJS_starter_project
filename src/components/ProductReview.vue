@@ -1,5 +1,14 @@
 <template>
   <div>
+    <div class="make-center">
+      <div class="review-error" v-if="errors.length">
+        <b>Please correct the following error(s) :</b>
+        <ul>
+          <li v-for="(error,index) in errors" :key="index">* {{ error }}</li>
+        </ul>
+      </div>
+    </div>
+
     <form @submit.prevent="onSubmit">
       <div class="form">
         <label for="name">Name</label>
@@ -119,5 +128,35 @@ button {
   font-weight: bold;
   border: 0;
   border-radius: 5px;
+}
+
+.review-error {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+  background: #ffefef;
+  width: 80vw;
+  border-radius: 10px;
+}
+
+b {
+  font-size: 13px;
+  margin-bottom: 4px;
+  color: #ff4757;
+}
+
+.review-error li {
+  list-style: none;
+  color: #ff4757;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.make-center {
+  display: flex;
+  justify-content: center;
 }
 </style>
