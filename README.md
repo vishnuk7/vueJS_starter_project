@@ -1,6 +1,6 @@
 ## Demo
 
-![demo](./screenshot/screenshot.gif)
+![demo](./screenshot/screenshot-2.gif)
 
 ## Project setup
 
